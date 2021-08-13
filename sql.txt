@@ -1,0 +1,184 @@
+1.)
+
+create table sales_details( Salesman_id varchar2(4) primary key, Name varchar2(20), City varchar2(10), Commision varchar2(6));
+
+insert into sales_details values(5001, 'James Hoog', 'New York', '0.15');
+
+insert into sales_details values(5002, 'Nail Knite', 'Paris', '0.13');
+
+insert into sales_details values(5005, 'Pit Alex', 'London', '0.11');
+
+insert into sales_details values(5006, 'Mc Lyon', 'Paris', '0.14');
+
+insert into sales_details values(5003, 'Lauson Hen', 'Sydney', '0.12');
+
+insert into sales_details values(5007, 'Paul Adam', 'Rome', '0.13');
+
+
+2.)
+
+select Salesman_id, Name from sales_details;
+
+
+3.)
+
+select Name from sales_details order by Name asc;
+
+
+4.)
+
+select Name, City from sales_details where City='Paris';
+
+
+5.)
+
+select * from sales_details where City='Paris' or City='Rome';
+
+
+6.)
+
+select * from sales_details where Name between 'A' and 'K';
+
+
+7.)
+
+create table customer_details( Customer_id varchar2(4) primary key, Cust_name varchar2(20), City varchar2(10), Grade varchar2(4), Salesman_id varchar2(4));
+
+insert into customer_details values(3002, 'Nick Rimando','New York', 100, 5001);
+
+insert into customer_details values(3005, 'Graham Zusi', 'California', 200, 5002);
+
+insert into customer_details(Customer_id, Cust_name, City, Salesman_id) values(3001, 'Brad Guzan', 'London', 5005);
+
+insert into customer_details values(3004, 'Fabian Johns', 'Paris', 300, 5006);
+
+insert into customer_details values(3007, 'Brad Davis', 'New York', 200, 5001);
+
+insert into customer_details values(3009, 'Geoff Camero', 'Berlin', 100, 5003);
+
+insert into customer_details values(3008, 'Julian Green', 'London', 300, 5002);
+
+insert into customer_details values(3003, 'Jozy Altidon', 'Moscow', 200, 5007);
+
+
+select * from customer_details where Grade='200';
+
+
+8.)
+
+create table product_details( Pro_id varchar2(3), Pro_Name varchar2(15), Pro_Price varchar2(8), Pro_com varchar2(4));
+
+insert into product_details values(101, 'Mother Board', 3200, 15);
+
+insert into product_details values(102, 'Key Board', 450, 16);
+
+insert into product_details values(103, 'Zip Drive', 250, 14);
+
+insert into product_details values(104, 'Speaker', 550, 16);
+
+insert into product_details values(105, 'Monitor', 5000, 11);
+
+insert into product_details values(106, 'DVD drive', 900, 12);
+
+insert into product_details values(107, 'CD drive', 800, 12);
+
+insert into product_details values(108, 'Printer', 2600, 13);
+
+insert into product_details values(109, 'Refill cartridge', 350, 13);
+
+select avg(Pro_Price) from product_details where Pro_com= '16';
+
+
+9.)
+
+select Pro_Name, Pro_Price from product_details where Pro_Price= (select min(Pro_Price) from product_details);
+
+
+10.) 
+
+create table e_details( EMP_IDNO varchar2(6) primary key, EMP_Fname varchar2(10), EMP_Lname varchar2(10), EMP_Dept varchar2(2));
+
+insert into e_details values(127323, 'Michale', 'Robbin', 57);
+
+insert into e_details values(526689, 'Carlos', 'Snares', 63);
+
+insert into e_details values(843795, 'Enric', 'Dasio', 57);
+
+insert into e_details values(328717, 'Jhon', 'Snares', 63);
+
+insert into e_details values(444527 , 'Joseph', 'Dosni', 47);
+
+insert into e_details values(659831, 'Zanifer', 'Emily', 47);
+
+insert into e_details values(847674, 'Kuleswar', 'Sitaraman', 57);
+
+insert into e_details values(748681, 'Hanrey', 'Gabriel', 47);
+
+insert into e_details values(555935, 'Alex', 'Manuel', 57);
+
+insert into e_details values(539569, 'George', 'Mardy', 27);
+
+insert into e_details values(733843, 'Mario', 'Saule', 63);
+
+insert into e_details values(631548, 'Alan', 'Snappy', 27);
+
+insert into e_details values(839139, 'Maria', 'Foster', 57);
+
+select distinct EMP_Lname from e_details;
+
+
+
+11.)
+
+select * from customer_details where Grade> 100;
+
+
+
+12.)
+
+select * from customer_details where City= 'New York' or Grade> 100;
+
+
+
+13.)
+
+select * from customer_details where City<> 'New York' and Grade<= 100;	
+
+
+
+14.)
+
+create table order_details( ord_no varchar2(5), purch_amt varchar2(15), ord_date date, customer_id varchar2(4), salesman_id varchar2(4));
+
+insert into order_details values( 70001, '150.5', '05/10/2012', 3005, 5002);
+
+insert into order_details values( 70009, '270.65', '10/09/2012', 3001, 5005);
+
+insert into order_details values( 70002, '65.26', '05/10/2012', 3002, 5001);
+
+insert into order_details values( 70004, '110.5', '17/08/2012', 3009, 5003);
+
+insert into order_details values( 70007, '948.5', '10/09/2012', 3005, 5002);
+
+insert into order_details values( 70005, '2400.6', '27/07/2012', 3007, 5001);
+
+insert into order_details values( 70008, '5760', '10/09/2012', 3002, 5001);
+
+insert into order_details values( 70010, '1983.43', '10/10/2012', 3004, 5006);
+
+insert into order_details values( 70003, '2480.4', '10/10/2012', 3009, 5003);
+
+insert into order_details values( 70012, '250.45', '27/06/2012', 3008, 5002);
+
+insert into order_details values( 70011, '75.29', '17/08/2012', 3003, 5007);
+
+insert into order_details values( 70013, '3045.6', '25/04/2012', 3002, 5001);
+
+
+select * from order_details where (ord_date<> '10/09/2012' and salesman_id<= 5005) or purch_amt<= '1000.00';
+
+
+
+15.)
+
+select * from order_details where(ord_date<> '17/08/2012' or customer_id<= 3005) and(purch_amt>= '1000');
